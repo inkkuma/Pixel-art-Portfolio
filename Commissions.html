@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Commissions - Inkkuma_art</title>
+  <meta name="description" content="Pixel art commissions by Inkkuma_art: animated sprites, characters and custom pieces." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <img src="images/LOGO.png" alt="Inkkuma logo" />
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Main</a>
+      <a href="farmtasia.html">Farmtasia</a>
+      <a href="Gamejams.html">Game Jams</a>
+      <a href="PersonalWork.html">Personal Work</a>
+      <a href="Commissions.html" class="active" aria-current="page">Commissions</a>
+    </nav>
+    <a class="contact-link" href="mailto:aamomartinez22@gmail.com">Contact</a>
+  </header>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="commissions-hero">
+    <h1>Commissions</h1>
+    <p class="lead">A selection of pixel art commissions: sprites, characters and animations made for other people's games and projects.</p>
+  </section>
+
+
+  <!-- Pieza destacada: el GIF de pantalla completa, en grande (640px) pero sin pasarse -->
+  <section class="showcase showcase-featured">
+    <article class="commission-card">
+      <div class="stage"><img src="images/Animación_Pixel-export.gif" alt="Idle animation of Mariona Foz concept" /></div>
+      <div class="card-body">
+        <h3>Omnis</h3>
+        <p class="role">Original Concept by "Mariona Foz" · Idle Animation of her project "Omnis" </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Una tarjeta por encargo. Para añadir otro, copia un <article> entero. -->
+  <section class="showcase">
+    <article class="commission-card">
+      <div class="stage"><img src="images/Roxey.gif" alt="Animated sprite of Roxey" /></div>
+      <div class="card-body">
+        <h3>Roxey</h3>
+        <p class="role">original Character by "NnDanny" · Idle Animation</p>
+      </div>
+    </article>
+
+    <article class="commission-card">
+      <div class="stage"><img src="images/MC.gif" alt="Animated sprite of MC" /></div>
+      <div class="card-body">
+        <h3>MC</h3>
+        <p class="role">original Character by "Wistala" · Combat Animations</p>
+      </div>
+    </article>
+
+    <article class="commission-card">
+      <div class="stage"><img src="images/MC2.gif" alt="Second animation of MC" /></div>
+      <div class="card-body">
+        <h3>MC</h3>
+        <p class="role">original Character by "Wistala" · Idle Animations</p>
+      </div>
+    </article>
+
+    <article class="commission-card">
+      <div class="stage"><img src="images/Lilly.gif" alt="Animated sprite of Lilly" /></div>
+      <div class="card-body">
+        <h3>Lilly</h3>
+        <p class="role">original Character by "Wistala" · Idle Animations and variants</p>
+      </div>
+    </article>
+  </section>
+   
+  </section>
+
+  <!-- ===================== MORE WORK ===================== -->
+  <div class="section-title">
+    <h2>More of my work</h2>
+    <p>Other projects I've worked on</p>
+  </div>
+
+  <section class="project-grid more-work">
+    <a class="project-card" href="farmtasia.html">
+      <div class="cover"><img src="images/F_CAP_1.png" alt="Farmtasia" /></div>
+      <div class="card-body">
+        <h2>FARMTASIA</h2>
+        <p class="role">Character animation · Platform fighter</p>
+      </div>
+    </a>
+
+    <a class="project-card" href="Gamejams.html">
+      <div class="cover"><img src="images/TV_G2.gif" alt="Game Jams" /></div>
+      <div class="card-body">
+        <h2>GAME JAMS</h2>
+        <p class="role">Pixel art for game jams</p>
+      </div>
+    </a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="socials">
+      <a href="https://www.instagram.com/inkkuma_art/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+      <a href="mailto:aamomartinez22@gmail.com">Contact</a>
+    </div>
+    <p>&copy; 2026 Inkkuma_art</p>
+  </footer>
+
+  <script>
+/* Ajusta cada sprite a un zoom ENTERO (x2, x3, x4...) dentro de su recuadro,
+   para que los píxeles se vean nítidos y no borrosos. */
+(function () {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.stage img'));
+
+  function fit(img) {
+    var stage = img.parentElement;
+    var nw = img.naturalWidth;
+    var nh = img.naturalHeight;
+    if (!nw || !nh) return;
+    var cs = getComputedStyle(stage);
+    var w = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var h = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    var scale = Math.floor(Math.min(w / nw, h / nh));
+    if (scale >= 1) {
+      img.style.width = nw * scale + 'px';
+      img.style.height = nh * scale + 'px';
+      img.style.imageRendering = '';       // zoom entero: píxeles nítidos
+    } else {
+      img.style.width = '';
+      img.style.height = '';
+      img.style.imageRendering = 'auto';   // se reduce: suavizado, sin bordes dentados
+    }
+  }
+
+  imgs.forEach(function (img) {
+    if (img.complete) fit(img);
+    else img.addEventListener('load', function () { fit(img); });
+  });
+
+  window.addEventListener('resize', function () { imgs.forEach(fit); });
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farmtasia - Portafolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <img src="images/LOGO.png" alt="Logo de Inkkuma" />
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Main</a>
+      <a href="farmtasia.html" class="active" aria-current="page">Farmtasia</a>
+      <a href="Gamejams.html">Game Jams</a>
+      <a href="PersonalWork.html">Personal Work</a>
+      <a href="Commissions.html">Commissions</a>
+    </nav>
+    <a class="contact-link" href="mailto:tu-correo@ejemplo.com">Contacto</a>
+  </header>
+
+  <section class="project-header">
+    <h1>Farmtasia</h1>
+    <p class="role">Character Animator / Platform Fight game, 2026</p>
+  </section>
+
+  <section class="carousel">
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carousel-track">
+        <img src="images/F_CAP_1.png" alt="Farmtasia 1" />
+        <img src="images/F_CAP_2.png" alt="Farmtasia 2" />
+        <img src="images/F_CAP_3.png" alt="Farmtasia 3" />
+        <img src="images/F_CAP_4.png" alt="Farmtasia 4" />
+      </div>
+      <button class="carousel-btn prev" id="prev-btn" aria-label="Anterior">&#10094;</button>
+      <button class="carousel-btn next" id="next-btn" aria-label="Siguiente">&#10095;</button>
+    </div>
+    <p class="carousel-counter"><span id="carousel-counter">1 / 4</span></p>
+  </section>
+
+ 
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+    <img id="lightbox-img" src="" alt="Vista ampliada" />
+  </div>
+
+  <section class="gallery gallery-sprites">
+    <div class="gallery-item"><img src="images/SHINJI_BIG_WALK.gif" alt="Shinji grande caminando" /></div>
+    <div class="gallery-item"><img src="images/SHINJI_PEQUE_SAU.gif" alt="Shinji pequeño SAU" /></div>
+    <div class="gallery-item"><img src="images/SHINJI_PEQUE_NS.gif" alt="Shinji pequeño NS" /></div>
+    <div class="gallery-item"><img src="images/SHINJI_PEQUE_BARRIDO.gif" alt="Shinji pequeño barrido" /></div>
+    <div class="gallery-item"><img src="images/SHINJI_PEQUE_DASH.gif" alt="Shinji pequeño dash" /></div>
+    <div class="gallery-item"><img src="images/MILIME_BIG_IDLE.gif" alt="Milime grande idle" /></div>
+    <div class="gallery-item"><img src="images/MILIME_PEQUE_NA.gif" alt="Milime pequeña NA" /></div>
+    <div class="gallery-item"><img src="images/MILIME_PEQUE_RUN.gif" alt="Milime pequeña corriendo" /></div>
+    <div class="gallery-item"><img src="images/MILIME_PEQUE_SA.gif" alt="Milime pequeña SA" /></div>
+    <div class="gallery-item"><img src="images/MILIME_PEQUE_DEATH.gif" alt="Milime pequeña muerte" /></div>
+    <div class="gallery-item"><img src="images/CIEL_BIG_IDLE.gif" alt="Ciel grande idle" /></div>
+    <div class="gallery-item"><img src="images/CIEL_PEQUE_NA.gif" alt="Ciel pequeño NA" /></div>
+    <div class="gallery-item"><img src="images/CIEL_PEQUE_IDLE.gif" alt="Ciel pequeño idle" /></div>
+    <div class="gallery-item"><img src="images/CIEL_PEQUE_SA.gif" alt="Ciel pequeño SA" /></div>
+    <div class="gallery-item"><img src="images/CIEL_PEQUE_FALL.gif" alt="Ciel pequeño caída" /></div>
+    <div class="gallery-item"><img src="images/PIRICKA_BIG_iDLE.gif" alt="Piricka grande idle" /></div>
+    <div class="gallery-item"><img src="images/Piricka_PEQUE_NA.gif" alt="Piricka pequeña NA" /></div>
+    <div class="gallery-item"><img src="images/Piricka_PEQUE_DEATH.gif" alt="Piricka pequeña muerte" /></div>
+    <div class="gallery-item"><img src="images/Piricka_PEQUE_SA1.gif" alt="Piricka pequeña SA1" /></div>
+    <div class="gallery-item"><img src="images/Piricka_PEQUE_SA2.gif" alt="Piricka pequeña SA2" /></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="socials">
+      <a href="https://www.instagram.com/inkkuma_art/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+      <a href="mailto:tu-correo@ejemplo.com">Contacto</a>
+    </div>
+    <p>&copy; 2026 Inkkuma_art</p>
+  </footer>
+
+  <script>
+/* Carrusel + lightbox compartidos por todas las páginas de proyecto */
+(function () {
+  function init() {
+    const track = document.getElementById('carousel-track');
+    if (!track) return;
+
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const counter = document.getElementById('carousel-counter');
+    const wrap = track.parentElement;
+    const slides = track.children.length;
+    const AUTOPLAY_DELAY = 5000; // 5 segundos
+    let index = 0;
+    let timer = null;
+
+    function update() {
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      if (counter) counter.textContent = (index + 1) + ' / ' + slides;
+    }
+
+    function go(step) {
+      index = (index + step + slides) % slides; // bucle infinito
+      update();
+    }
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function start() {
+      stop();
+      timer = setInterval(function () { go(1); }, AUTOPLAY_DELAY);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); start(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(1); start(); });
+
+    // Swipe en móvil
+    let startX = null;
+    wrap.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    wrap.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); start(); }
+      startX = null;
+    });
+
+    // Lightbox: el autoplay se pausa solo mientras la imagen está ampliada
+    const overlay = document.getElementById('lightbox-overlay');
+    const overlayImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    function openLightbox(src, alt) {
+      overlayImg.src = src;
+      overlayImg.alt = alt || '';
+      overlay.classList.add('active');
+      stop();
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      overlayImg.src = '';
+      start();
+    }
+
+    if (overlay && overlayImg) {
+      Array.prototype.forEach.call(track.children, function (img) {
+        img.addEventListener('click', function () { openLightbox(img.src, img.alt); });
+      });
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeLightbox();
+      });
+    }
+
+    // Teclado: flechas y Escape
+    document.addEventListener('keydown', function (e) {
+      if (overlay && overlay.classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        return;
+      }
+      if (e.key === 'ArrowLeft') { go(-1); start(); }
+      if (e.key === 'ArrowRight') { go(1); start(); }
+    });
+
+    update();
+    start();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>

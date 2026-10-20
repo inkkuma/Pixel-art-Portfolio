@@ -1,0 +1,1130 @@
+/* ======================================
+   Portafolio - style.css
+   ====================================== */
+
+:root {
+  --bg: #17151f;
+  --bg-alt: #1f1c2b;
+  --card: #24202f;
+  --text: #f2f0f5;
+  --text-dim: #a9a4bb;
+  --accent: rgb(231, 255, 92);
+  --accent-hover: #a2d434;
+  --border: #332e45;
+  --max-width: 1300px;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main,
+.hero,
+.project-grid,
+.project-header,
+.carousel,
+.gallery {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 14px 32px;
+  background: rgba(31, 28, 43, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  image-rendering: pixelated;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover img {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.main-nav a {
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Página actual: verde del tema */
+.main-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.contact-link {
+  font-size: 0.95rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 16px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.contact-link:hover {
+  background: var(--accent);
+  color: #17151f;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 32px 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin: 0 0 8px;
+  letter-spacing: 0.5px;
+}
+
+.hero h1 .slash {
+  color: var(--accent);
+}
+
+.hero p {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ---------- Grid de proyectos (index) ---------- */
+
+.project-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.project-card .cover {
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  image-rendering: pixelated;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.04);
+}
+
+.project-card .card-body {
+  padding: 20px 24px 24px;
+}
+
+.project-card h2 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.project-card h2::after {
+  content: " →";
+  color: var(--accent);
+  opacity: 0;
+  display: inline-block;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover h2 {
+  color: var(--accent);
+}
+
+.project-card:hover h2::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-card .role {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* ---------- Página de proyecto ---------- */
+
+.project-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 44px 32px 10px;
+  text-align: center;
+}
+
+.project-header h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+}
+
+.project-header .role {
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Carrusel */
+
+.carousel {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 32px;
+}
+
+.carousel-track-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-track img {
+  width: 100%;
+  flex: 0 0 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  /* Se reducen de 1920x1080 a ~836px: con "pixelated" salen bordes dentados.
+     "auto" aplica un reescalado suave y se ven nítidas. */
+  image-rendering: auto;
+  cursor: zoom-in;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  color: #17151f;
+}
+
+.carousel-btn.prev {
+  left: 14px;
+}
+
+.carousel-btn.next {
+  right: 14px;
+}
+
+.carousel-counter {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+/* Enlaces del proyecto (debajo del carrusel) */
+
+.project-links {
+  max-width: 900px;
+  margin: 0 auto 10px;
+  padding: 0 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.project-link::after {
+  content: "→";
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover {
+  background: var(--accent);
+  color: #17151f;
+  transform: translateY(-2px);
+}
+
+.project-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* Galería */
+
+.gallery {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 32px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: center;
+  gap: 28px;
+}
+
+.gallery .gallery-item {
+  position: relative;
+  width: 200px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.gallery .gallery-item:hover {
+  transform: scale(1.8);
+  border-color: var(--accent);
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery img {
+  /* Tamaño real de los gifs: se muestran nítidos */
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Lightbox (vista ampliada del carrusel) */
+
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 21, 31, 0.94);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  image-rendering: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--text);
+  font-size: 2.4rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--accent);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding: 26px 32px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.site-footer .socials {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.site-footer .socials a {
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+
+.site-footer .socials a:hover {
+  color: var(--accent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+  .site-header {
+    padding: 12px 18px;
+    gap: 12px;
+  }
+  .main-nav {
+    order: 3;
+    flex-basis: 100%;
+    gap: 2px;
+  }
+  .hero {
+    padding: 40px 18px 8px;
+  }
+  .project-grid {
+    padding: 28px 18px 60px;
+  }
+  .carousel,
+  .project-header,
+  .project-links,
+  .gallery {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .gallery .gallery-item:hover {
+    transform: scale(1.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Personal Work: varios proyectos en una página ---------- */
+
+.sub-nav {
+  position: sticky;
+  top: var(--header-h, 76px); /* justo debajo del header; lo ajusta el script */
+  z-index: 90;
+  width: 100%;
+  padding: 12px 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: rgba(23, 21, 31, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.sub-nav a {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.sub-nav a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.personal-section {
+  width: 100%;
+  padding: 56px 0 16px;
+  scroll-margin-top: calc(var(--header-h, 76px) + var(--subnav-h, 56px) + 12px); /* los menús fijos no tapan el título */
+}
+
+.personal-section + .personal-section {
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+}
+
+.personal-head {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.personal-head h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.personal-head .role {
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.back-top {
+  display: block;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  padding: 0 32px 24px;
+  transition: color 0.2s ease;
+}
+
+.back-top:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .sub-nav,
+  .personal-head,
+  .back-top {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* ---------- Galería de sprites (Farmtasia) ----------
+   Zoom al pasar el ratón: 128px -> 256px (exactamente x2).
+   Con un múltiplo entero cada píxel del sprite se convierte en un bloque 2x2
+   perfecto; con x1.8 salían píxeles de tamaños desiguales y se veía borroso.
+   La imagen cambia de tamaño real (no con transform) para que se dibuje nítida. */
+
+.gallery-sprites .gallery-item {
+  position: relative;
+  isolation: isolate;
+  background: none;
+  border: none;
+}
+
+.gallery-sprites .gallery-item:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.gallery-sprites .gallery-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: top 0.2s ease, right 0.2s ease, bottom 0.2s ease, left 0.2s ease,
+              border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-sprites img {
+  /* El reset global "img { max-width: 100% }" limitaba el zoom a 200px
+     (el ancho de la casilla) y rompía el x2 exacto. */
+  max-width: none;
+  max-height: none;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+@media (hover: hover) {
+  .gallery-sprites .gallery-item:hover {
+    z-index: 5;
+  }
+
+  .gallery-sprites .gallery-item:hover::before {
+    top: -64px;
+    bottom: -64px;
+    left: -36px;
+    right: -36px;
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .gallery-sprites .gallery-item:hover img {
+    width: 256px;
+    height: 256px;
+  }
+}
+
+/* ---------- Personal Work: navegación fluida y secciones ---------- */
+
+.sub-nav a.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(231, 255, 92, 0.08);
+}
+
+.personal-section .carousel {
+  margin-top: 28px;
+}
+
+.personal-section .gallery {
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+
+/* Carrusel de merch: no recorta nada (GIFs cuadrados, fotos...) */
+.carousel-square {
+  max-width: 760px;
+}
+
+.carousel-square .carousel-track img {
+  object-fit: contain;
+}
+
+/* Añade la clase "carousel-pixel" al carrusel si son GIFs pequeños de pixel art
+   y se ven borrosos al ampliarse */
+.carousel-pixel .carousel-track img {
+  image-rendering: pixelated;
+}
+
+@media (max-width: 700px) {
+  .sub-nav {
+    padding: 10px 18px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+    justify-content: safe center;
+    scrollbar-width: none;
+  }
+  .sub-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .sub-nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+/* ---------- Commissions ---------- */
+
+.commissions-hero {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 32px 8px;
+  text-align: center;
+}
+
+.commissions-hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.commissions-hero .lead {
+  margin: 0 auto 28px;
+  max-width: 620px;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 4px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.status-pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.status-pill.closed::before {
+  background: #e0566b;
+}
+
+.section-title {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 32px 0;
+  text-align: center;
+}
+
+.section-title h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+.section-title p {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* Trabajos: pocas piezas, pero grandes y bien presentadas */
+
+.showcase {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* si sobra una pieza, queda centrada */
+  gap: 16px;
+}
+
+.commission-card {
+  flex: 0 1 240px; /* 4 por fila en escritorio */
+  min-width: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.commission-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.commission-card .stage {
+  height: 210px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-conic-gradient(#201d2b 0% 25%, #1c1926 0% 50%) 50% / 24px 24px;
+}
+
+.commission-card .stage img {
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated; /* el script ajusta un zoom entero: píxeles nítidos */
+}
+
+.commission-card .card-body {
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.commission-card h3 {
+  margin: 0 0 2px;
+  font-size: 1rem;
+}
+
+.commission-card .role {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+/* Qué hago */
+
+.services {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+.service {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.service h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.service p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* Cómo funciona */
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 20px;
+}
+
+.steps li {
+  counter-increment: step;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 22px 24px;
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.steps h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.steps p {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.93rem;
+}
+
+/* Llamada a la acción */
+
+.cta-block {
+  width: calc(100% - 64px);
+  max-width: 760px;
+  margin: 72px auto 0;
+  padding: 40px 32px;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.cta-block h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+.cta-block p {
+  margin: 0 0 22px;
+  color: var(--text-dim);
+}
+
+.cta-block .alt {
+  margin: 18px 0 0;
+  font-size: 0.9rem;
+}
+
+.cta-block .alt a {
+  color: var(--accent);
+}
+
+.more-work .project-card img {
+  image-rendering: auto; /* capturas grandes: reescalado suave */
+}
+
+@media (max-width: 700px) {
+  .commissions-hero,
+  .section-title,
+  .showcase,
+  .services,
+  .steps {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .cta-block {
+    width: calc(100% - 36px);
+    padding: 32px 20px;
+  }
+  .showcase {
+    gap: 12px;
+  }
+  .commission-card {
+    flex-basis: calc(50% - 6px); /* 2 por fila en móvil */
+  }
+  .commission-card .stage {
+    height: 180px;
+    padding: 8px;
+  }
+  .section-title {
+    padding-top: 36px;
+  }
+}
+
+/* ---------- Olive: sprites grandes y vídeo ---------- */
+
+.gallery-big {
+  display: flex;            /* una sola fila en escritorio */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery-big .gallery-item {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 280px;
+}
+
+/* En pantallas más estrechas, 2 por fila (así no queda una suelta) */
+@media (max-width: 1243px) {
+  .gallery-big {
+    max-width: 644px;
+  }
+}
+
+.gallery-big img {
+  width: 256px;   /* x2 exacto de un sprite de 128px: píxeles nítidos */
+  height: 256px;
+  max-width: none;
+}
+
+.gallery-big .gallery-item:hover {
+  transform: none; /* ya son grandes: solo resalta el borde */
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-block {
+  max-width: 900px;
+  margin: 8px auto 0;
+  padding: 0 32px 24px;
+  text-align: center;
+}
+
+.video-block h3 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* Vídeo vertical: se muestra a su proporción real, sin barras negras alrededor */
+.video-block video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 75vh;   /* no ocupa más que la pantalla */
+  margin: 0 auto;
+  border-radius: var(--radius);
+}
+
+.video-block iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 700px) {
+  .video-block {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* ---------- Olive: sprites a la izquierda, vídeo vertical a la derecha ---------- */
+
+.olive-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 32px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* Sprites en 2x2: 2 casillas de 280px + hueco de 20px = 580px */
+.olive-layout .gallery-big {
+  flex: 0 0 auto;
+  width: 580px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* El vídeo mide lo mismo que los sprites (2 filas = 580px de alto) */
+.olive-layout .video-block {
+  flex: 0 0 auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.olive-layout .video-block video {
+  height: 580px;
+  width: auto;
+  max-width: 100%;
+  max-height: none;
+}
+
+.olive-layout .video-block h3 {
+  margin: 10px 0 0;
+}
+
+/* Pantallas estrechas: se apilan (sprites arriba, vídeo debajo) */
+@media (max-width: 1000px) {
+  .olive-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  .olive-layout .gallery-big {
+    width: 100%;
+    max-width: 580px;
+  }
+  .olive-layout .video-block video {
+    height: auto;
+    max-height: 75vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .olive-layout {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* ---------- Commissions: pieza destacada (GIF de pantalla completa) ---------- */
+
+.showcase-featured .commission-card {
+  flex: 0 1 640px; /* grande, pero sin obligar a bajar mucho */
+}
+
+.showcase-featured .commission-card .stage {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+}
+
+.showcase-featured + .showcase {
+  padding-top: 16px;
+}
