@@ -6,6 +6,7 @@
   <title>Personal Work - Inkkuma_art</title>
   <meta name="description" content="Proyectos personales de Inkkuma_art: Olive, Ink Bits, merch y pixel art." />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="images/FAVICON.png" />
 </head>
 <body>
 
@@ -32,10 +33,53 @@
        Un enlace por sección, en el mismo orden que aparecen en la página.
        El href debe coincidir con el id de la sección. -->
   <nav class="sub-nav" aria-label="Proyectos personales">
-    <a href="#olive">Olive</a>
     <a href="#ink-bits">Ink Bits</a>
+    <a href="#olive">Olive</a>
     <!-- <a href="#proyecto-2">Proyecto 2</a> -->
   </nav>
+
+  <!-- ===================== PROYECTO: INK BITS ===================== -->
+  <section class="personal-section" id="ink-bits">
+    <div class="personal-head">
+      <h2>INK BITS</h2>
+      <p class="role">My artist alley merch! Keychains that animate with AR! More that 40 different animations.</p>
+      <p class="role">Here you can see some examples. I don't own any of these characters!</p>
+    </div>
+
+    <!-- IMPORTANTE: solo UN carrusel por página (el script usa id="carousel-track").
+         Los demás proyectos deben usar galería o imágenes sueltas, sin carrusel. -->
+    <div class="carousel carousel-square">
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carousel-track">
+          <img src="images/EJEMPLO PEGATINA ANIMADA.gif" alt="Llavero Ink Bits animado" />
+          <img src="images/Link_Showcase.gif" alt="Llavero de Link de Ink Bits" />
+          <img src="images/STAND.jpg" alt="Mi puesto en la artist alley con los llaveros Ink Bits" />
+        </div>
+        <button class="carousel-btn prev" id="prev-btn" aria-label="Anterior">&#10094;</button>
+        <button class="carousel-btn next" id="next-btn" aria-label="Siguiente">&#10095;</button>
+      </div>
+      <p class="carousel-counter"><span id="carousel-counter">1 / 3</span></p>
+    </div>
+
+    <div class="project-links">
+      <a class="project-link" href="https://inkkumaart.github.io/INK-BITS/" target="_blank" rel="noopener">INK BITS WEB!</a>
+    </div>
+
+    <div class="gallery gallery-sprites">
+      <div class="gallery-item"><img src="images/Mark.gif" alt="Mark" /></div>
+      <div class="gallery-item"><img src="images/Sailor_Moon.gif" alt="Sailor Moon" /></div>
+      <div class="gallery-item"><img src="images/Ranni.gif" alt="Ranni" /></div>
+      <div class="gallery-item"><img src="images/Fuecoco.gif" alt="Fuecoco" /></div>
+      <div class="gallery-item"><img src="images/Neko_Arc.gif" alt="Neko Arc" /></div>
+      <div class="gallery-item"><img src="images/BEN10.gif" alt="Neko Arc" /></div>
+      <div class="gallery-item"><img src="images/Rei.gif" alt="Neko Arc" /></div>
+       <div class="gallery-item"><img src="images/Goldship.gif" alt="Neko Arc" /></div>
+      <div class="gallery-item"><img src="images/reze.gif" alt="Neko Arc" /></div>
+      <div class="gallery-item"><img src="images/hollow.gif" alt="Neko Arc" /></div>
+    </div>
+
+    <a class="back-top" href="#">↑ Back to start</a>
+  </section>
 
   <!-- ===================== PROYECTO: OLIVE ===================== -->
   <section class="personal-section" id="olive">
@@ -65,44 +109,7 @@
       </div>
     </div>
 
-    <a class="back-top" href="#">↑ Volver arriba</a>
-  </section>
-
-  <!-- ===================== PROYECTO: INK BITS ===================== -->
-  <section class="personal-section" id="ink-bits">
-    <div class="personal-head">
-      <h2>INK BITS</h2>
-      <p class="role">My artist alley merch! Keychains that animate with AR! More that 40 different animations Here you can see some examples</p>
-    </div>
-
-    <!-- IMPORTANTE: solo UN carrusel por página (el script usa id="carousel-track").
-         Los demás proyectos deben usar galería o imágenes sueltas, sin carrusel. -->
-    <div class="carousel carousel-square">
-      <div class="carousel-track-wrap">
-        <div class="carousel-track" id="carousel-track">
-          <img src="images/EJEMPLO PEGATINA ANIMADA.gif" alt="Llavero Ink Bits animado" />
-          <img src="images/Link_Showcase.gif" alt="Llavero de Link de Ink Bits" />
-          <img src="images/STAND.jpg" alt="Mi puesto en la artist alley con los llaveros Ink Bits" />
-        </div>
-        <button class="carousel-btn prev" id="prev-btn" aria-label="Anterior">&#10094;</button>
-        <button class="carousel-btn next" id="next-btn" aria-label="Siguiente">&#10095;</button>
-      </div>
-      <p class="carousel-counter"><span id="carousel-counter">1 / 3</span></p>
-    </div>
-
-    <div class="project-links">
-      <a class="project-link" href="https://inkkumaart.github.io/INK-BITS/" target="_blank" rel="noopener">INK BITS WEB!</a>
-    </div>
-
-    <div class="gallery gallery-sprites">
-      <div class="gallery-item"><img src="images/Mark.gif" alt="Mark" /></div>
-      <div class="gallery-item"><img src="images/Ranni.gif" alt="Ranni" /></div>
-      <div class="gallery-item"><img src="images/Sailor_Moon.gif" alt="Sailor Moon" /></div>
-      <div class="gallery-item"><img src="images/Fuecoco.gif" alt="Fuecoco" /></div>
-      <div class="gallery-item"><img src="images/Neko_Arc.gif" alt="Neko Arc" /></div>
-    </div>
-
-    <a class="back-top" href="#">↑ Volver arriba</a>
+    <a class="back-top" href="#">↑ Back to start</a>
   </section>
 
   <!-- ===================== PLANTILLA PARA OTRO PROYECTO =====================
